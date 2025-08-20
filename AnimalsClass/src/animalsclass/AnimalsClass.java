@@ -11,6 +11,8 @@ package animalsclass;
 public abstract class AnimalsClass {
     private String name;
     private String song;
+    private String color;
+    private Integer age;
 
     public String getName() {
         return name;
@@ -26,6 +28,22 @@ public abstract class AnimalsClass {
 
     public void setSong(String song) {
         this.song = song;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public abstract String emitSong();
