@@ -23,7 +23,7 @@ public abstract class AnimalsClass {
     private String name;
     private String song;
     private String color;
-    Private Integer age;
+    private Integer age;
     // Constructor, Getters and Setters 
     public abstract String emitSong();    
     public abstract String alterSong(String newSong);
