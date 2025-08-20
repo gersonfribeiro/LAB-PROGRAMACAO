@@ -22,6 +22,8 @@ A classe `AnimalsClass` define a estrutura de cada animal sendo a nossa classe a
 public abstract class AnimalsClass {
     private String name;
     private String song;
+    private String color;
+    Private Integer age;
     // Constructor, Getters and Setters 
     public abstract String emitSong();    
     public abstract String alterSong(String newSong);
@@ -38,6 +40,8 @@ public abstract class AnimalsClass {
       <th>Nome da classe</th>
       <th>Nome setado no objeto</th>
       <th>Som setado</th>
+      <th>Cor setada</th>
+      <th>Idade setada</th>
     </tr>
   </thead>
   <tbody>
@@ -45,16 +49,22 @@ public abstract class AnimalsClass {
       <td>HorseClass</td>
       <td>Flash</td>
       <td>Relincho</td>
+      <td>Brown</td>
+      <td>12</td>
     </tr>
     <tr>
       <td>CatClass</td>
       <td>Garfield</td>
       <td>Miado</td>
+      <td>orange</td>
+      <td>46</td>
     </tr>
     <tr>
       <td>DogClass</td>
       <td>Max</td>
       <td>Latido</td>
+      <td>white</td>
+      <td>22</td>
     </tr>
   </tbody>
 </table>
