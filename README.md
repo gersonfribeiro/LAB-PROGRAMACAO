@@ -81,3 +81,39 @@ public abstract class AnimalsClass {
 ▶Mostra no console uma mensagem que o veterinário pegou algum animal e o inseriu na carrocinha para cada um dos elementos presentes no array.
 
 </details>
+
+<details>
+  <summary><h2>📌 Atividade 2: Gerenciamento de Biblioteca - <em>Diretório: GerenciamentoBiblioteca</em></h2></summary>
+
+## 🛠 Proposta da atividade
+
+Este projeto demonstra o uso prático de **POO** com Java. 
+Aplicando os conceitos do paradigma, montamos uma estrutura de projeto simples capaz de realizar de uma forma reduzida o gerenciamento de uma biblioteca.
+Dentre as funcionalidades temos como **cadastrar livros, membros e empréstimos**, **editar os mesmos**, **listar os cadastrados** e **remover os cadastros**.
+
+---
+
+### 📋 Estrutura dos Dados
+
+Temos um [DIAGRAMA UML](https://lucid.app/lucidchart/bd1dfb0d-05f8-435d-ac60-6ac66d68abb8/edit?invitationId=inv_76e2c4ff-fcda-4abf-b57f-4b3354baec52) representando as classes do projeto que foi elaborado utilizando a ferramenta [Lucid](https://lucid.app/) 
+
+### 🧩 Funções de gerenciamento implementadas
+
+#### ● Fluxo1️⃣ Gerenciar livros 
+▶Listar, cadastrar, editar, remover.
+
+#### ● Fluxo2️⃣ Gerenciar membros
+▶Listar, cadastrar, editar, remover.
+
+#### ● Fluxo3️⃣ Gerenciar empréstimos
+▶Listar, cadastrar, editar, remover.
+
+### 📋 Integrantes do grupo
+
+#### ● [Gerson f. Ribeiro](https://github.com/gersonfribeiro)
+
+#### ● [Yan Zampier](https://github.com/yanpzr)
+
+#### ● [Allan Mota Melgaço](https://github.com/ALMelga)
+
+</details>
