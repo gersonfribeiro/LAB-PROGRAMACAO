@@ -1,28 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package gerenciamentobiblioteca;
 
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- *
- * @author Aluno
+/*
+  Classe Membro:
+  Subclasse de Usuario que representa os membros da biblioteca.
+  Possui lista de empréstimos feitos pelo membro.
+  Implementa os métodos cadastrar e editar.
  */
 public class Membro extends Usuario{
     private List<Emprestimo> emprestimos;
 
     public Membro() {}
 
-    public List<Emprestimo> getEmprestimos() {
-        return emprestimos;
-    }
-
-    public void setEmprestimos(List<Emprestimo> emprestimos) {
-        this.emprestimos = emprestimos;
-    }    
+    public List<Emprestimo> getEmprestimos() { return emprestimos; }
+    public void setEmprestimos(List<Emprestimo> emprestimos) { this.emprestimos = emprestimos; }
 
     @Override
     Usuario cadastrar(String nome, String cpf, LocalDate dataNasc) {
