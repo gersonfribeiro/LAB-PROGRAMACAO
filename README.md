@@ -83,7 +83,7 @@ public abstract class AnimalsClass {
 </details>
 
 <details>
-  <summary><h2>📌 Atividade 2: Gerenciamento de Biblioteca - <em>Diretório: GerenciamentoBiblioteca</em></h2></summary>
+  <summary><h2>📌 Atividade 2: Gerencia de Biblioteca - <em>Diretório: GerenciamentoBiblioteca</em></h2></summary>
 
 ## 🛠 Proposta da atividade
 
