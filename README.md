@@ -5,7 +5,7 @@
 ---
 
 <details>
-  <summary><h2>📌 Atividade 1: Exercícios Práticos (Animais) - <em>Diretório: AnimalsClass</em></h2></summary>
+  <summary><h2>📌 Atv. 1: Exercícios Práticos (Animais) - <em>Dir.: AnimalsClass</em></h2></summary>
 
 ## 🛠 Conceitos de POO com Java
 
@@ -83,7 +83,7 @@ public abstract class AnimalsClass {
 </details>
 
 <details>
-  <summary><h2>📌 Atividade 2: Gerencia de Biblioteca - <em>Diretório: GerenciamentoBiblioteca</em></h2></summary>
+  <summary><h2>📌 Atv. 2: Gerencia de Biblioteca - <em>Dir.: GerenciamentoBiblioteca</em></h2></summary>
 
 ## 🛠 Proposta da atividade
 
