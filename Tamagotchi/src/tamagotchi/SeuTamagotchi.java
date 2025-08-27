@@ -15,7 +15,7 @@ public class SeuTamagotchi extends Animal {
 
     public SeuTamagotchi() {}
 
-//  nascer: pergunta os dados do animal (nome, classe e família). O animal recebe 10 de força e caloria, 0 na idade e true como estado;
+//  nascer: pergunta os dados do animal (nome, classe e famÃ­lia). O animal recebe 10 de forÃ§a e caloria, 0 na idade e true como estado;
     @Override
     Animal nascer(String nome, ClassesAnimal classe, FamiliasAnimal familia) {
         Animal tamagochi = new SeuTamagotchi();
@@ -30,20 +30,20 @@ public class SeuTamagotchi extends Animal {
         return tamagochi;
     }
 
-//  morrer: coloca 0 na força e false como estado;
+//  morrer: coloca 0 na forÃ§a e false como estado;
     @Override
     void morrer(Animal animal) {
         animal.setForca(0);
         animal.setEstado(Boolean.FALSE);
     }
 
-//  comer: caso o animal n?o esteja cheio e/ou morto, insere 10 no estado caloria e retira 2 de força
+//  comer: caso o animal n?o esteja cheio e/ou morto, insere 10 no estado caloria e retira 2 de forÃ§a
     @Override
     void comer(Animal animal) {
         ExceptionsGenericas.validarAnimalVivo(animal);
         try {
             if (animal.getCalorias() >= 100) {
-                throw new Exception(String.format("%s está cheio!", animal.getNome()));
+                throw new Exception(String.format("%s esta cheio!", animal.getNome()));
             } else {
                 Integer novasCalorias = animal.getCalorias() + 10;
                 if (novasCalorias <= 100) {
@@ -57,13 +57,13 @@ public class SeuTamagotchi extends Animal {
         }
     }
 
-//  correr: caso o animal n?o esteja morto ou exausto (caloria = 0), retira 5 do estado força e 5 do estado caloria;
+//  correr: caso o animal n?o esteja morto ou exausto (caloria = 0), retira 5 do estado forÃ§a e 5 do estado caloria;
     @Override
     void correr(Animal animal) {
         ExceptionsGenericas.validarAnimalVivo(animal);
         try {
             if (animal.getCalorias().equals(0)) {
-                throw new Exception(String.format("%s está exausto!", animal.getNome()));
+                throw new Exception(String.format("%s esta exausto!", animal.getNome()));
             } else {
                 animal.setForca(animal.getForca() - 5);
                 animal.setCalorias(animal.getCalorias() - 5);
@@ -73,7 +73,7 @@ public class SeuTamagotchi extends Animal {
         }
     }
 
-//  dormir: caso o animal n?o esteja morto, insere 10 no estado força e retira 2 do estado caloria.
+//  dormir: caso o animal n?o esteja morto, insere 10 no estado forÃ§a e retira 2 do estado caloria.
     @Override
     void dormir(Animal animal) {
         ExceptionsGenericas.validarAnimalVivo(animal);
