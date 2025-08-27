@@ -4,11 +4,10 @@
  */
 package tamagotchi;
 
-import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static tamagotchi.ExceptionsGenericas.validarEntradaCriacao;
 
 /**
  *
@@ -20,77 +19,50 @@ public class Tamagotchi {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // Declaraç?o do Scanner
-        Scanner scanner = new Scanner(System.in);
-        String nomeTamagotchi = "";
-        int opcaoClasse = 0;
-        int opcaoFamilia = 0;
-        
         // Declaraç?o do animal
-        Animal girafaTamagotchi = new SeuTamagotchi();
-
+        Animal tamagotchi = new SeuTamagotchi();
+        tamagotchi.nascer();
+        
+        Integer opcaoMenu = 0;
+        
         try {
-            // Solicitar ao usuário as informaç?es para o tamagotchi nascer - NOME
-            System.out.println("Primeiro de um nome ao seu Tamagotchi: ");
-            nomeTamagotchi = scanner.nextLine();
-            System.out.println(String.format("Nome do seu Tamagotchi: %s", nomeTamagotchi));
-            
-            // - CLASSE
-            System.out.println("Agora escolha a sua classe!");
-            String opcoesClasses = "Selecione entre: \n";
-            ClassesAnimal[] classesAnimais = ClassesAnimal.values();            
-            ArrayList<Integer> valoresValidos = new ArrayList<>();
-            ArrayList<String> descricoes = new ArrayList<>();
+            Scanner scanner = new Scanner(System.in);  
 
-            for (int i = 0; i < ClassesAnimal.values().length; i++) {
-                opcoesClasses += String.format("%d - %s\n", i + 1, classesAnimais[i].name());
-                valoresValidos.add(i);
-                descricoes.add(classesAnimais[i].name());
-            }
-            
-            System.out.println(opcoesClasses);
-            opcaoClasse = scanner.nextInt();
-            opcaoClasse = opcaoClasse - 1;
-            validarEntradaCriacao(opcaoClasse, valoresValidos, descricoes);
-            
-            System.out.println("Voce digitou: " + (opcaoClasse + 1) + " - " + classesAnimais[opcaoFamilia].name());
-            
-            // - FAMILIA
-            System.out.println("Por fim escolha a familia!");
-            String opcoesFamilias = "Selecione entre:\n";
-            FamiliasAnimal[] familiasAnimais = FamiliasAnimal.values();            
-            valoresValidos = new ArrayList<>();
-            descricoes = new ArrayList<>();
-
-            for (int i = 0; i < FamiliasAnimal.values().length; i++) {
-                opcoesFamilias += String.format("%d - %s\n", i + 1, familiasAnimais[i].name());
-                valoresValidos.add(i);
-                descricoes.add(familiasAnimais[i].name());
-            }
-            
-            System.out.println(opcoesFamilias);
-            opcaoFamilia = scanner.nextInt();
-            opcaoFamilia = opcaoFamilia - 1;
-            validarEntradaCriacao(opcaoFamilia, valoresValidos, descricoes);
-
-            System.out.println("Voce digitou: " + (opcaoFamilia + 1) + " - " + familiasAnimais[opcaoFamilia].name());
-
-        } catch (Exception e) {
-            // Exceç?o genérica para qualquer erro
-            System.out.println("Erro: " + e.getMessage());
-            // Lançar uma exceç?o personalizada
-            throw new RuntimeException("Erro no processamento de entrada", e);
-        } finally {
-            // Garantir que o Scanner seja fechado
-            try {
-                if (scanner.equals(null)) {
-                    throw new Exception("Erro ao fechar o scanner!");
-                } else {
-                    scanner.close();
+            while (tamagotchi.getEstado().equals(Boolean.TRUE)) {       
+                try {
+                    System.out.println("Selecione uma das opç?es abaixo:\n1- COMER\n2- CORRER\n3- DORMIR\n4- MORRER e SAIR");
+                    opcaoMenu = scanner.nextInt();   
+                } catch (InputMismatchException e) {
+                    System.out.println("Entrada inválida! Por favor, insira um número.");
+                    scanner.nextLine();
+                    Logger.getLogger(SeuTamagotchi.class.getName()).log(Level.SEVERE, null, e);
+                    continue;
                 }
-            } catch (Exception e) {
-                Logger.getLogger(SeuTamagotchi.class.getName()).log(Level.SEVERE, null, e);
+                
+                switch (opcaoMenu) {
+                    case 1: {
+                        tamagotchi.comer();
+                        break;
+                    }
+                    case 2: {
+                        tamagotchi.correr();
+                        break;
+                    }
+                    case 3: {
+                        tamagotchi.dormir();
+                        break;
+                    }
+                    case 4: {
+                        tamagotchi.morrer();
+                        break;
+                    }
+                    default: {
+                        System.out.println("Opç?o inválida!");
+                    }
+                }
             }
+        } catch (Exception e) {
+            Logger.getLogger(SeuTamagotchi.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 }

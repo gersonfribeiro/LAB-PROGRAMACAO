@@ -26,17 +26,17 @@ public class ExceptionsGenericas {
         }
     }
     
-    public static void validarEntradaCriacao(Integer opcao, ArrayList<Integer> valoresValidos, ArrayList<String> descricoes) {
+    public static Boolean validarEntradaCriacao(Integer opcao, ArrayList<Integer> valoresValidos, ArrayList<String> descricoes) {
+        Boolean validar = Boolean.FALSE;
         try {
-            Boolean validar = Boolean.FALSE;
             for (int i = 0; i < valoresValidos.size(); i++) {
                 if (opcao.equals(valoresValidos.get(i))) {
                     validar = Boolean.TRUE;
-                    break;
+                    return validar;
                 }
             }
             if (!validar) {
-                String mensagemErro = String.format("%d nao e um valor valido!\nSelecione entre: \n", opcao);
+                String mensagemErro = String.format("%d nao e um valor valido!\nSelecione entre: \n", opcao + 1);
                 for (int i = 0; i < valoresValidos.size(); i++) {
                     mensagemErro += String.format("%d - %s\n", i + 1, descricoes.get(i));
                 }
@@ -45,5 +45,6 @@ public class ExceptionsGenericas {
         } catch (Exception e) {
             Logger.getLogger(SeuTamagotchi.class.getName()).log(Level.SEVERE, null, e);
         }
+        return validar;
     }
 }

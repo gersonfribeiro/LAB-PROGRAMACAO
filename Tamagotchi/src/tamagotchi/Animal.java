@@ -76,20 +76,18 @@ public abstract class Animal {
         this.forca = forca;
     }
     
+    //nascer: pergunta os dados do animal (nome, classe e família). O animal recebe 10 de força e caloria, 0 na idade e true como estado;
+    abstract void nascer();
     
-//    nascer: pergunta os dados do animal (nome, classe e família). O animal recebe 10 de força e caloria, 0 na idade e true como estado;
-//morrer: coloca 0 na força e false como estado;
-//comer: caso o animal n?o esteja cheio e/ou morto, insere 10 no estado caloria e retira 2 de força;
-//correr: caso o animal n?o esteja morto ou exausto (caloria = 0), retira 5 do estado força e 5 do estado caloria;
-//dormir: caso o animal n?o esteja morto, insere 10 no estado força e retira 2 do estado caloria.
+    //morrer: coloca 0 na força e false como estado;
+    abstract void morrer();
     
-    abstract Animal nascer(String nome, ClassesAnimal classe, FamiliasAnimal familia);
+    //comer: caso o animal n?o esteja cheio e/ou morto, insere 10 no estado caloria e retira 2 de força;
+    abstract void comer();
     
-    abstract void morrer(Animal animal);
+    //correr: caso o animal n?o esteja morto ou exausto (caloria = 0), retira 5 do estado força e 5 do estado caloria;
+    abstract void correr();
     
-    abstract void comer(Animal animal);
-    
-    abstract void correr(Animal animal);
-    
-    abstract void dormir(Animal animal);
+    //dormir: caso o animal n?o esteja morto, insere 10 no estado força e retira 2 do estado caloria.
+    abstract void dormir();
 }

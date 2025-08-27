@@ -4,8 +4,11 @@
  */
 package tamagotchi;
 
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static tamagotchi.ExceptionsGenericas.validarEntradaCriacao;
 
 /**
  *
@@ -17,39 +20,37 @@ public class SeuTamagotchi extends Animal {
 
 //  nascer: pergunta os dados do animal (nome, classe e famÃ­lia). O animal recebe 10 de forÃ§a e caloria, 0 na idade e true como estado;
     @Override
-    Animal nascer(String nome, ClassesAnimal classe, FamiliasAnimal familia) {
-        Animal tamagochi = new SeuTamagotchi();
-        tamagochi.setNome(nome);
-        tamagochi.setClasse(classe);
-        tamagochi.setFamilia(familia);
-        tamagochi.setCalorias(10);
-        tamagochi.setForca(10);
-        tamagochi.setIdade(0);
-        tamagochi.setEstado(Boolean.TRUE);
+    void nascer() {        
+        solicitarDados();
+        this.setCalorias(10);
+        this.setForca(10);
+        this.setIdade(0);
+        this.setEstado(Boolean.TRUE);
+        
+        System.out.println(this.toString());        
 
-        return tamagochi;
     }
 
 //  morrer: coloca 0 na forÃ§a e false como estado;
     @Override
-    void morrer(Animal animal) {
-        animal.setForca(0);
-        animal.setEstado(Boolean.FALSE);
+    void morrer() {
+        this.setForca(0);
+        this.setEstado(Boolean.FALSE);
     }
 
 //  comer: caso o animal n?o esteja cheio e/ou morto, insere 10 no estado caloria e retira 2 de forÃ§a
     @Override
-    void comer(Animal animal) {
-        ExceptionsGenericas.validarAnimalVivo(animal);
+    void comer() {
+        ExceptionsGenericas.validarAnimalVivo(this);
         try {
-            if (animal.getCalorias() >= 100) {
-                throw new Exception(String.format("%s esta cheio!", animal.getNome()));
+            if (this.getCalorias() >= 100) {
+                throw new Exception(String.format("%s esta cheio!", this.getNome()));
             } else {
-                Integer novasCalorias = animal.getCalorias() + 10;
+                Integer novasCalorias = this.getCalorias() + 10;
                 if (novasCalorias <= 100) {
-                    animal.setCalorias(novasCalorias);
+                    this.setCalorias(novasCalorias);
                 } else {
-                    animal.setCalorias(100);
+                    this.setCalorias(100);
                 }
             }
         } catch (Exception e) {
@@ -59,14 +60,14 @@ public class SeuTamagotchi extends Animal {
 
 //  correr: caso o animal n?o esteja morto ou exausto (caloria = 0), retira 5 do estado forÃ§a e 5 do estado caloria;
     @Override
-    void correr(Animal animal) {
-        ExceptionsGenericas.validarAnimalVivo(animal);
+    void correr() {
+        ExceptionsGenericas.validarAnimalVivo(this);
         try {
-            if (animal.getCalorias().equals(0)) {
-                throw new Exception(String.format("%s esta exausto!", animal.getNome()));
+            if (this.getCalorias().equals(0)) {
+                throw new Exception(String.format("%s esta exausto!", this.getNome()));
             } else {
-                animal.setForca(animal.getForca() - 5);
-                animal.setCalorias(animal.getCalorias() - 5);
+                this.setForca(Math.max(this.getForca() - 5, 0));
+                this.setCalorias(Math.max(this.getCalorias() - 5, 0));
             }
         } catch (Exception e) {
             Logger.getLogger(SeuTamagotchi.class.getName()).log(Level.SEVERE, null, e);
@@ -75,13 +76,97 @@ public class SeuTamagotchi extends Animal {
 
 //  dormir: caso o animal n?o esteja morto, insere 10 no estado forÃ§a e retira 2 do estado caloria.
     @Override
-    void dormir(Animal animal) {
-        ExceptionsGenericas.validarAnimalVivo(animal);
+    void dormir() {
+        ExceptionsGenericas.validarAnimalVivo(this);
         try {
-            animal.setForca(animal.getForca() + 10);
-            animal.setCalorias(animal.getCalorias() - 2);
+            this.setForca(this.getForca() + 10);
+            this.setCalorias(Math.max(this.getCalorias() - 2, 0));
         } catch (Exception e) {
             Logger.getLogger(SeuTamagotchi.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+    
+    public void solicitarDados() {
+        // Declaraç?o do Scanner
+        Scanner scanner = new Scanner(System.in);
+        String nomeTamagotchi = "";
+        Boolean controladoraValidacao = Boolean.FALSE;
+        int opcaoClasse = 0;
+        int opcaoFamilia = 0;
+        
+        try {
+            // Solicitar ao usuário as informaç?es para o tamagotchi nascer - NOME
+            System.out.println("Primeiro de um nome ao seu Tamagotchi: ");
+            nomeTamagotchi = scanner.nextLine();
+            System.out.println(String.format("Nome do seu Tamagotchi: %s", nomeTamagotchi));
+            this.setNome(nomeTamagotchi);
+            
+            // - CLASSE
+            System.out.println("Agora escolha a sua classe!");
+            String opcoesClasses = "Selecione entre: \n";
+            ClassesAnimal[] classesAnimais = ClassesAnimal.values();            
+            ArrayList<Integer> valoresValidos = new ArrayList<>();
+            ArrayList<String> descricoes = new ArrayList<>();
+
+            for (int i = 0; i < ClassesAnimal.values().length; i++) {
+                opcoesClasses += String.format("%d - %s\n", i + 1, classesAnimais[i].name());
+                valoresValidos.add(i);
+                descricoes.add(classesAnimais[i].name());
+            }
+            
+            System.out.println(opcoesClasses);
+            
+            while (!controladoraValidacao) {
+                opcaoClasse = scanner.nextInt();
+                opcaoClasse = opcaoClasse - 1;
+                controladoraValidacao = validarEntradaCriacao(opcaoClasse, valoresValidos, descricoes);
+            }
+            
+            System.out.println("Voce digitou: " + (opcaoClasse + 1) + " - " + classesAnimais[opcaoClasse].name());
+            this.setClasse(classesAnimais[opcaoClasse]);
+            
+            // - FAMILIA
+            System.out.println("Por fim escolha a familia!");
+            String opcoesFamilias = "Selecione entre:\n";
+            FamiliasAnimal[] familiasAnimais = FamiliasAnimal.values();            
+            valoresValidos = new ArrayList<>();
+            descricoes = new ArrayList<>();
+
+            for (int i = 0; i < FamiliasAnimal.values().length; i++) {
+                opcoesFamilias += String.format("%d - %s\n", i + 1, familiasAnimais[i].name());
+                valoresValidos.add(i);
+                descricoes.add(familiasAnimais[i].name());
+            }
+            
+            System.out.println(opcoesFamilias);
+            
+            controladoraValidacao = Boolean.FALSE;
+            while (!controladoraValidacao) {
+                opcaoFamilia = scanner.nextInt();
+                opcaoFamilia = opcaoFamilia - 1;
+                controladoraValidacao = validarEntradaCriacao(opcaoFamilia, valoresValidos, descricoes);
+            }
+            
+            System.out.println("Voce digitou: " + (opcaoFamilia + 1) + " - " + familiasAnimais[opcaoFamilia].name());
+            this.setFamilia(familiasAnimais[opcaoFamilia]);
+
+        } catch (Exception e) {
+            // Exceç?o genérica para qualquer erro
+            System.out.println("Erro: " + e.getMessage());
+            // Lançar uma exceç?o personalizada
+            throw new RuntimeException("Erro no processamento de entrada", e);
+        } finally {
+            // Garantir que o Scanner seja fechado
+            try {
+                if (scanner.equals(null)) {
+                    throw new Exception("Erro ao fechar o scanner!");
+                } else {
+                    scanner.close();
+                }
+            } catch (Exception e) {
+                Logger.getLogger(SeuTamagotchi.class.getName()).log(Level.SEVERE, null, e);
+            }
+            scanner.close();
         }
     }
 }
