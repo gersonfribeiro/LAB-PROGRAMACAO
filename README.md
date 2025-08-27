@@ -117,3 +117,64 @@ Temos um [DIAGRAMA UML](https://lucid.app/lucidchart/bd1dfb0d-05f8-435d-ac60-6ac
 #### ● [Allan Mota Melgaço](https://github.com/ALMelga)
 
 </details>
+
+<details>
+  <summary><h2>📌 Atv. 3: Tamagotchi - <em>Dir.: Tamagotchi</em></h2></summary>
+
+## 🛠 Proposta da atividade
+
+Este projeto demonstra o uso prático de **POO** com Java.  
+Conforme vamos avançando com as práticas, novos conceitos vão sendo implementados nas propostas das atividades, dessa vez adicionamos um **Scaner** para receber **entrada de dados** do usuário e os blocos **try/catch** para implementação de **exceptions**.
+
+---
+
+### 📋 Estrutura dos Dados
+
+A classe `Animal` define a estrutura de cada Tamagotchi sendo a nossa classe abstrata:
+
+```java
+public abstract class Animal {
+    private String nome;
+    private ClassesAnimal classe;
+    private FamiliasAnimal familia;
+    private Integer idade;
+    private Boolean estado;
+    private Integer calorias;
+    private Integer forca;
+
+    // Construtor, Getters e Setters...
+
+    abstract Animal nascer();
+    
+    abstract void morrer(Animal animal);
+    
+    abstract void comer(Animal animal);
+    
+    abstract void correr(Animal animal);
+    
+    abstract void dormir(Animal animal);
+}
+```
+
+## 🔭 Classes implementando a abstração
+
+Uma classe SeuTamagotchi extende e implementa os métodos abstratos contidos na classe animal, assim como também contém em sua implementação o Scanner que é responsável por receber a entrada de dados do usuário para executar com sucesso o método nascer()
+
+### 🧩 Funções Implementadas
+
+#### ● Function1️⃣ nascer() 
+▶Utiliza métodos auziliares para imprimir as opções válidas no console, utilizar um Scanner para receber a entrada dos dados, validar e se caso der erro levantar uma exception e solicitar novos dados ao usuário. Após tudo estar correto ele instancia um novo Objeto.
+
+#### ● Function2️⃣ morrer(Animal animal)
+▶Alterações no objeto passado como referência no parâmetro. Modifica o estado de vivo ou morto e zera a força.
+
+#### ● Function3️⃣ comer(Animal animal)
+▶Alterações no objeto passado como referência no parâmetro. Valida se o animal está vivo e se não está cheio para que então modifique o estado de calorias e força.
+
+#### ● Function4️⃣ correr(Animal animal)
+▶Alterações no objeto passado como referência no parâmetro. Valida se o animal está vivo e se não está exausto para que então modifique o estado de calorias e força.
+
+#### ● Function5️⃣ dormir(Animal animal)
+▶Alterações no objeto passado como referência no parâmetro. Valida se o animal está vivo para que então modifique o estado de calorias e força.
+
+</details>
