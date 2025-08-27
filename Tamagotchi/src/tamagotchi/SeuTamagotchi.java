@@ -20,14 +20,14 @@ public class SeuTamagotchi extends Animal {
 
 //  nascer: pergunta os dados do animal (nome, classe e famÃ­lia). O animal recebe 10 de forÃ§a e caloria, 0 na idade e true como estado;
     @Override
-    void nascer() {        
-        solicitarDados();
+    void nascer(Scanner scanner) {        
+        solicitarDados(scanner);
         this.setCalorias(10);
         this.setForca(10);
         this.setIdade(0);
         this.setEstado(Boolean.TRUE);
         
-        System.out.println(this.toString());        
+        System.out.println(this.toString());
 
     }
 
@@ -36,6 +36,8 @@ public class SeuTamagotchi extends Animal {
     void morrer() {
         this.setForca(0);
         this.setEstado(Boolean.FALSE);
+        
+        System.out.println(this.toString());
     }
 
 //  comer: caso o animal n?o esteja cheio e/ou morto, insere 10 no estado caloria e retira 2 de forÃ§a
@@ -55,6 +57,8 @@ public class SeuTamagotchi extends Animal {
             }
         } catch (Exception e) {
             Logger.getLogger(SeuTamagotchi.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            System.out.println(this.toString());
         }
     }
 
@@ -71,6 +75,8 @@ public class SeuTamagotchi extends Animal {
             }
         } catch (Exception e) {
             Logger.getLogger(SeuTamagotchi.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            System.out.println(this.toString());
         }
     }
 
@@ -83,12 +89,13 @@ public class SeuTamagotchi extends Animal {
             this.setCalorias(Math.max(this.getCalorias() - 2, 0));
         } catch (Exception e) {
             Logger.getLogger(SeuTamagotchi.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            System.out.println(this.toString());
         }
     }
     
-    public void solicitarDados() {
+    public void solicitarDados(Scanner scanner) {
         // Declaraç?o do Scanner
-        Scanner scanner = new Scanner(System.in);
         String nomeTamagotchi = "";
         Boolean controladoraValidacao = Boolean.FALSE;
         int opcaoClasse = 0;
@@ -155,18 +162,19 @@ public class SeuTamagotchi extends Animal {
             System.out.println("Erro: " + e.getMessage());
             // Lançar uma exceç?o personalizada
             throw new RuntimeException("Erro no processamento de entrada", e);
-        } finally {
-            // Garantir que o Scanner seja fechado
-            try {
-                if (scanner.equals(null)) {
-                    throw new Exception("Erro ao fechar o scanner!");
-                } else {
-                    scanner.close();
-                }
-            } catch (Exception e) {
-                Logger.getLogger(SeuTamagotchi.class.getName()).log(Level.SEVERE, null, e);
-            }
-            scanner.close();
         }
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "TAMAGOTCHI: \nNome: %s\nClasse: %s\nFamilia: %s\nIdade: %d\nCalorias: %d\nForça: %d",
+                this.getNome(),
+                this.getClasse().name(),
+                this.getFamilia().name(),
+                this.getIdade(),
+                this.getCalorias(),
+                this.getForca()
+        );
     }
 }

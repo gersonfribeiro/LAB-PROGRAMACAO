@@ -4,6 +4,8 @@
  */
 package tamagotchi;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Aluno
@@ -77,7 +79,7 @@ public abstract class Animal {
     }
     
     //nascer: pergunta os dados do animal (nome, classe e família). O animal recebe 10 de força e caloria, 0 na idade e true como estado;
-    abstract void nascer();
+    abstract void nascer(Scanner scanner);
     
     //morrer: coloca 0 na força e false como estado;
     abstract void morrer();

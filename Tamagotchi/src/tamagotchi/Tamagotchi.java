@@ -20,14 +20,13 @@ public class Tamagotchi {
      */
     public static void main(String[] args) {
         // Declaraç?o do animal
-        Animal tamagotchi = new SeuTamagotchi();
-        tamagotchi.nascer();
-        
         Integer opcaoMenu = 0;
+        Animal tamagotchi = new SeuTamagotchi();
+        Scanner scanner = new Scanner(System.in);  
+        tamagotchi.nascer(scanner);        
         
         try {
-            Scanner scanner = new Scanner(System.in);  
-
+            scanner.reset();
             while (tamagotchi.getEstado().equals(Boolean.TRUE)) {       
                 try {
                     System.out.println("Selecione uma das opç?es abaixo:\n1- COMER\n2- CORRER\n3- DORMIR\n4- MORRER e SAIR");
