@@ -144,15 +144,15 @@ public abstract class Animal {
 
     // Construtor, Getters e Setters...
 
-    abstract Animal nascer();
+    abstract Animal nascer(Scanner scanner);
     
-    abstract void morrer(Animal animal);
+    abstract void morrer();
     
-    abstract void comer(Animal animal);
+    abstract void comer();
     
-    abstract void correr(Animal animal);
+    abstract void correr();
     
-    abstract void dormir(Animal animal);
+    abstract void dormir();
 }
 ```
 
@@ -162,19 +162,19 @@ Uma classe SeuTamagotchi extende e implementa os métodos abstratos contidos na 
 
 ### 🧩 Funções Implementadas
 
-#### ● Function1️⃣ nascer() 
+#### ● Function1️⃣ nascer(Scanner scanner) 
 ▶Utiliza métodos auziliares para imprimir as opções válidas no console, utilizar um Scanner para receber a entrada dos dados, validar e se caso der erro levantar uma exception e solicitar novos dados ao usuário. Após tudo estar correto ele instancia um novo Objeto.
 
-#### ● Function2️⃣ morrer(Animal animal)
+#### ● Function2️⃣ morrer()
 ▶Alterações no objeto passado como referência no parâmetro. Modifica o estado de vivo ou morto e zera a força.
 
-#### ● Function3️⃣ comer(Animal animal)
+#### ● Function3️⃣ comer()
 ▶Alterações no objeto passado como referência no parâmetro. Valida se o animal está vivo e se não está cheio para que então modifique o estado de calorias e força.
 
-#### ● Function4️⃣ correr(Animal animal)
+#### ● Function4️⃣ correr()
 ▶Alterações no objeto passado como referência no parâmetro. Valida se o animal está vivo e se não está exausto para que então modifique o estado de calorias e força.
 
-#### ● Function5️⃣ dormir(Animal animal)
+#### ● Function5️⃣ dormir()
 ▶Alterações no objeto passado como referência no parâmetro. Valida se o animal está vivo para que então modifique o estado de calorias e força.
 
 </details>
