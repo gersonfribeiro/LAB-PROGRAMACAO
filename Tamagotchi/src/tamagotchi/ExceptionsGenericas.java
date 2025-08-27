@@ -19,7 +19,7 @@ public class ExceptionsGenericas {
     public static void validarAnimalVivo(Animal animal) {
         try {
             if (animal.getEstado().equals(Boolean.FALSE)) {
-                throw new Exception(String.format("%s está morto!", animal.getNome()));
+                throw new Exception(String.format("%s esta morto!", animal.getNome()));
             }
         } catch (Exception e) {
             Logger.getLogger(SeuTamagotchi.class.getName()).log(Level.SEVERE, null, e);
@@ -36,7 +36,7 @@ public class ExceptionsGenericas {
                 }
             }
             if (!validar) {
-                String mensagemErro = String.format("%d N?o é um valor válido!\nSelecione entre: \n", opcao);
+                String mensagemErro = String.format("%d nao e um valor valido!\nSelecione entre: \n", opcao);
                 for (int i = 0; i < valoresValidos.size(); i++) {
                     mensagemErro += String.format("%d - %s\n", i + 1, descricoes.get(i));
                 }
